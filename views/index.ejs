@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Trujillo Ward</title>
+    <meta property="og:title" content="Trujillo Ward Website">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/dhu9pmzqp/image/upload/v1739804287/jesus_healing_ymvch4.webp">
+    <meta property="og:url" content="https://gotayjosue.github.io/wdd231/project/index.html">
+    <meta name="author" content="Josué Hernández Gotay">
+    <meta name="description" content="WDD 231 - Web Frontend Development I - Josué Hernández Gotay">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" href="images/favicon3.ico">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/home-large.css">
+    <script src="/js/home.js" type="module" defer></script>
+    <script>
+        window.WEATHER_API_URL = "<%= weatherApiUrl %>";
+    </script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="images/trujillo_logo.png" alt="Trujillo Ward Logo">
+
+        <nav id="navigation">
+            <a class="current-element" href="/">Home</a>
+            <a href="/activities">Activities</a>
+            <a href="/directory">Directory</a>
+            <a href="/contact">Contact Us</a>
+        </nav>
+        <button id="menuButton"></button>
+
+        <h2 class="title">Trujillo Ward Website</h2>
+        <div class="desktop-only">
+            <h2>Welcome to the Trujillo Ward website!</h2>
+            <p>Here, you'll find information about our activities, leaders, and special events. 
+                We invite you to join us and experience the love of Christ in our community.</p>
+        </div>
+        <img class="hero" src="images/jesus_healing.webp" alt="Jesus healing people">
+    </header>
+
+    <main>
+        <div class="links">
+            <div class="directory">
+                <img src="images/location.webp" alt="Location icon">
+                <h3>Ward Directory</h3>
+                <p>Get to know the leaders of our church organizations and their roles. The Ward Directory provides information 
+                    about each organization’s purpose and how they serve our congregation</p>
+            </div>
+            <div class="calendar">
+                <img src="images/calendar.webp" alt="Calendar icon">
+                <h3>Activities Calendar</h3>
+                <p>Stay informed about upcoming church events, meetings, and activities. The Activities 
+                    Calendar helps you plan and participate in spiritual and community gatherings</p>
+            </div>
+            <div class="group">
+                <img src="images/group.webp" alt="Group icon">
+                <h3>Get to Know Us</h3>
+                <p>Learn more about our church, our mission, and our beliefs. Get to know the 
+                    people who serve and how you can become part of our faith community</p>
+            </div>
+        </div>
+
+        <div class="data">
+            <div class="weather">
+                <h3>Current Weather</h3>
+            </div>
+
+            <div class="spotlight">
+                <h3>Activities spotlight</h3>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy <span id="year"></span> Trujillo Ward</p>
+        <div class="social">
+            <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.webp" alt="Facebook logo"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="images/instagram.webp" alt="Instagram logo"></a>
+        </div>
+    </footer>
+</body>
+</html>

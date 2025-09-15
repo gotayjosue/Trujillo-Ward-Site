@@ -1,0 +1,54 @@
+@media screen and (min-width: 1000px){
+
+
+    header{
+        padding-bottom: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav{
+        display: flex;
+        gap: 40px;
+        justify-content: flex-end;
+        grid-column:3;
+        grid-row: 1;
+        background: none;
+        padding-right: 15px;
+        grid-template-rows: 1fr;
+        background-color: none;
+        overflow: visible;
+        opacity: 1;
+        max-height: none;
+    }
+
+
+    #menuButton{
+        display: none;
+    }
+
+    .gallery{
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 30px;
+        padding: 40px;
+    }
+    
+    .gallery img{
+        width: auto;  /* Make images to expand at the same size as their container */
+        height: auto; /* Mantain image proportion */
+        max-width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        flex: 1 0 auto;
+        box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.445);
+        cursor: pointer;
+        transition: 1s;
+        
+    }
+    
+    .gallery img:hover{
+        filter: brightness(1.150);
+        transform: scale(0.9);
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Update Activity</title>
+        <link rel="stylesheet" href="/css/activity_form.css">
+    </head>
+    <body>
+        <h2>Update Activity</h2>
+        <form action="/activities/<%= activity._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <label for="activity">Activity Name:</label>
+            <input value="<%= activity.activity %>" type="text" id="activity" name="activity" required minlength="3" maxlength="100">
+
+            <label for="completed">Status:</label>
+            <select name="completed" id="completed">
+                <option value="false" <%= activity.completed === false ? 'selected' : '' %>>Not Completed</option>
+                <option value="true"  <%= activity.completed === true  ? 'selected' : '' %>>Completed</option>
+            </select>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="<%= activity.location %>" required maxlength="100">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="<%= new Date(activity.date).toISOString().slice(0,10) %>" required>
+
+            <label for="time">Time:</label>
+            <input type="text" id="time" name="time" value="<%= activity.time %>" required pattern="^([1-9]|1[0-2])\s?(AM|PM)$" placeholder="e.g. 3 PM">
+
+            <label for="responsible">Responsible:</label>
+            <input type="text" id="responsible" name="responsible" value="<%= activity.responsible %>" required maxlength="50">
+
+            <label for="org">Organization:</label>
+            <select id="organization" name="org" required>
+                <option value="">Select organization</option>
+                <option value="kids" <%= activity.org === 'kids' ? 'selected' : '' %>>Primary</option>
+                <option value="women" <%= activity.org === 'women' ? 'selected' : '' %>>Relief Society</option>
+                <option value="men" <%= activity.org === 'men' ? 'selected' : '' %>>Elders Cuorum</option>
+                <option value="youngMen" <%= activity.org === 'youngMen' ? 'selected' : '' %>>Young Men</option>
+                <option value="youngGirls" <%= activity.org === 'youngGirls' ? 'selected' : '' %>>Young Women</option>
+                <option value="forAll" <%= activity.org === 'forAll' ? 'selected' : '' %>>For all members</option>
+            </select>
+
+            <!-- Subir nuevas fotos -->
+            <label for="photos">Upload new photos:</label>
+            <input type="file" id="photos" name="photos" accept=".jpg,.jpeg,.png,.webp" multiple>
+
+            <% if (activity.photos && activity.photos.length) { %>
+                <div class="old-photos">
+                    <% activity.photos.forEach((photo, idx) => { %>
+                    <div class="photo-item">
+                        <!-- Mostrar miniatura -->
+                        <img src="<%= photo.url %>" alt="Photo <%= idx+1 %>" style="max-width:120px; display:block; margin-bottom:6px;">
+
+                        <!-- Guardar foto completa como JSON -->
+                        <input type="hidden" name="oldPhotos" value='<%- JSON.stringify(photo) %>'>
+
+                        <!-- Opción para eliminar -->
+                        <label class="remove-label">
+                        <input type="checkbox" name="deletePhotos" value="<%= photo.public_id %>">
+                        Remove this photo
+                        </label>
+                    </div>
+                    <% }) %>
+                </div>
+                <% } else { %>
+                <p>No photos uploaded yet.</p>
+            <% } %>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" maxlength="500"><%= activity.description %></textarea>
+
+            <button type="submit">Update Activity</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities | Trujillo Ward</title>
+    <meta property="og:title" content="Trujillo Ward Website">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/dhu9pmzqp/image/upload/v1739804287/jesus_healing_ymvch4.webp">
+    <meta property="og:url" content="https://gotayjosue.github.io/wdd231/project/activities.html">
+    <meta name="author" content="Josué Hernández Gotay">
+    <meta name="description" content="WDD 231 - Web Frontend Development I - Josué Hernández Gotay">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" href="images/favicon3.ico">
+    <link rel="stylesheet" href="/css/activities.css">
+    <link rel="stylesheet" href="/css/activities-large.css">
+    <script src="/js/activities.js" type="module" defer></script>
+</head>
+<body>
+    <header id="mainHeader">
+        <img class="logo" src="images/trujillo_logo.png" alt="Trujillo Ward Logo">
+
+        <nav id="navigation">
+            <a href="/">Home</a>
+            <a class="current-element" href="/activities">Activities</a>
+            <a href="/directory">Directory</a>
+            <a href="/contact">Contact Us</a>
+        </nav>
+        <button id="menuButton"></button>
+
+        <h2 class="title">Trujillo Ward Website</h2>
+        <div class="desktop-only">
+            <h2>Welcome to the Trujillo Ward Website!</h2>
+            <p>Here, you'll find information about our activities, leaders, and special events. 
+                We invite you to join us and experience the love of Christ in our community.</p>
+        </div>
+        <img class="hero" src="images/jesus_healing.webp" alt="Jesus healing people">
+    </header>
+
+    <main>
+        <div class="filters">
+            <label for="month">Filter by month</label>
+            <select name="month" id="month">
+                <option value="all" selected>All months</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+
+            <label for="org">Filter by organization</label>
+            <select name="org" id="org">
+                <option value="all" selected>All organizations</option>
+                <option value="kids">Primary</option>
+                <option value="women">Relief Society</option>
+                <option value="men">Elders Cuorum</option>
+                <option value="youngMen">Young Men</option>
+                <option value="youngGirls">Young Women</option>
+                <option value="forAll">For all members</option>
+            </select>
+        </div>
+
+                <!-- Sticky Add Activity Button -->
+        <div class="sticky-add-btn" id="addActivityBtnContainer">
+            <button id="addActivityBtn">+</button>
+            <span class="tooltip">Add a new activity</span>
+        </div>
+        <script>
+            document.getElementById('addActivityBtn').addEventListener('click', function() {
+                window.location.href = '/activity_form';
+            });
+        </script>
+
+        <div class="calendar"></div>
+    </main>
+
+    <footer id="mainFooter">
+        <p>&copy <span id="year"></span> Trujillo Ward</p>
+        <div class="social">
+            <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.webp" alt="Facebook logo"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="images/instagram.webp" alt="Instagram logo"></a>
+        </div>
+    </footer>
+</body>
+</html>

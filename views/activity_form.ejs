@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Activity</title>
+    <link rel="stylesheet" href="/css/activity_form.css">
+</head>
+<body>
+    <h2>Add a New Activity</h2>
+  <form action="/activity_form" method="POST">
+    <label for="activity">Activity Name:</label>
+    <input type="text" id="activity" name="activity" required minlength="3" maxlength="100">
+
+    <label for="completed">Status:</label>
+    <input type="text" id="status" name="completed" value="false" readonly>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required maxlength="100">
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <input type="text" id="time" name="time" required pattern="^([1-9]|1[0-2])\s?(AM|PM)$" placeholder="e.g. 3 PM">
+
+    <label for="responsible">Responsible:</label>
+    <input type="text" id="responsible" name="responsible" required maxlength="50">
+
+    <label for="org">Organization:</label>
+    <select id="organization" name="org" required>
+        <option value="">Select organization</option>
+        <option value="kids">Primary</option>
+        <option value="women">Relief Society</option>
+        <option value="men">Elders Cuorum</option>
+        <option value="youngMen">Young Men</option>
+        <option value="youngGirls">Young Women</option>
+        <option value="forAll">For all members</option>
+    </select>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" maxlength="500"></textarea>
+
+    <button type="submit">Create Activity</button>
+  </form>
+</body>
+</html>

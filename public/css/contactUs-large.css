@@ -1,0 +1,27 @@
+@media screen and (min-width: 1000px){
+
+
+    header{
+        padding-bottom: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav{
+        display: flex;
+        gap: 40px;
+        justify-content: flex-end;
+        grid-column:3;
+        grid-row: 1;
+        background: none;
+        padding-right: 15px;
+        grid-template-rows: 1fr;
+        background-color: none;
+        overflow: visible;
+        opacity: 1;
+        max-height: none;
+    }
+
+
+    #menuButton{
+        display: none;
+    }
+}

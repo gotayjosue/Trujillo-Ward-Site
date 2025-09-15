@@ -1,0 +1,157 @@
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--primary-color, #6b9080);
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  margin-top: 1.5rem;
+  background: var(--primary-color, #6b9080);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: var(--secondary-color, #cce3de);
+  color: var(--primary-color, #6b9080);
+}
+
+/* Contenedor de inputs de fotos */
+#photos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Cada input con botón */
+.photo-input {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.photo-input input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Botón de quitar */
+.btn-remove {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.removeBtn {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-remove:hover {
+  background-color: #e60000;
+}
+
+/* Botón de agregar */
+.btn-add {
+  margin-top: 0.5rem;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: #3e8e41;
+}
+
+.old-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.photo-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.photo-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+/* Label del checkbox */
+.remove-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Personalizar checkbox */
+.remove-label input[type="checkbox"] {
+  accent-color: #e60000; /* Rojo moderno en navegadores nuevos */
+  width: 16px;
+  height: 16px;
+}

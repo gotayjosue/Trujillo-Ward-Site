@@ -1,0 +1,10 @@
+:root{
+    --primary-color: #6b9080;
+    --secondary-color: #cce3de;
+    --accent2: #ffffff;
+}
+
+#formData{
+    background-color: var(--secondary-color);
+    padding: 20px;
+}

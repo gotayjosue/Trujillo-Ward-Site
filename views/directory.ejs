@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory | Trujillo Ward</title>
+    <meta property="og:title" content="Trujillo Ward Website">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://res.cloudinary.com/dhu9pmzqp/image/upload/v1739804287/jesus_healing_ymvch4.webp">
+    <meta property="og:url" content="https://gotayjosue.github.io/wdd231/project/directory.html">
+    <meta name="author" content="Josué Hernández Gotay">
+    <meta name="description" content="WDD 231 - Web Frontend Development I - Josué Hernández Gotay">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="icon" href="images/favicon3.ico">
+    <link rel="stylesheet" href="/css/directory.css">
+    <link rel="stylesheet" href="/css/directory-large.css">
+    <script src="/js/directory.js" defer></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="images/trujillo_logo.png" alt="Trujillo Ward Logo">
+
+        <nav id="navigation">
+            <a href="/">Home</a>
+            <a  href="/activities">Activities</a>
+            <a class="current-element" href="/directory">Directory</a>
+            <a href="/contact">Contact Us</a>
+        </nav>
+        <button id="menuButton"></button>
+
+        <h2 class="title">Trujillo Ward Website</h2>
+        <div class="desktop-only">
+            <h2>Welcome to the Trujillo Ward Website!</h2>
+            <p>Here, you'll find information about our activities, leaders, and special events. 
+                We invite you to join us and experience the love of Christ in our community.</p>
+        </div>
+        <img class="hero" src="images/jesus_healing.webp" alt="Jesus healing people">
+    </header>
+
+    <main>
+        <div class="directory">
+            <div>
+                <img src="images/bishopric.webp" alt="Bishopric Icon">
+                <h3>Bishopric</h3>
+                <button id="bishopricOpen">Learn More</button>
+                <dialog id="bishopric">
+                    <button id="bishopricClose">❌</button>
+                    <p>The bishopric is responsible for all ward members, organizations, and activities. The bishop presides over the ward council, 
+                    but he can make better decisions after discussions with his counselors and with the ward council, when appropriate.</p>
+                    <p>Trujillo Ward's Bishopric Members:</p>
+                    <ul>
+                        <li><strong>Bishop:</strong> Andres Thomas</li>
+                        <li><strong>First Counselor:</strong> Angel Rodriguez</li>
+                        <li><strong>Second Counselor:</strong> Marcos Marcia</li>
+                    </ul>
+                </dialog>
+            </div>
+
+            <div>
+                <img src="images/clerk.webp" alt="Ward Clerk Icon">
+                <h3>Ward Clerk</h3>
+                <button id="wardClerkOpen">Learn More</button>
+                <dialog id="wardClerk">
+                    <button id="wardClerkClose">❌</button>
+                    <p>“The ward clerk keeps a record of assignments and decisions made during ward council meetings. 
+                        … He also provides relevant statistical information from Church record-keeping software.”</p>
+                    <p><strong>Trujillo Ward's Clerk:</strong> Nefi Arzú</p>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/clerk.webp" alt="Executive Secretary Icon">
+                <h3>Executive Secretary</h3>
+                <button id="exeSecOpen">Learn More</button>
+                <dialog id="exeSecretary">
+                    <button id="exeSecClose">❌</button>
+                    <p>“The executive secretary prepares agendas for ward council meetings. … The bishop may also ask him to help follow up with ward council members on their assignments. 
+                        … [He] can also provide continuity between the ward council and the priesthood executive committee.”</p>
+                    <p><strong>Trujillo Ward's Executive Secretary:</strong> Josué López</p>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/maleLeader.webp" alt="Melchizedek Priesthood Leaders Icon">
+                <h3>Melchizedek Priesthood Leaders</h3>
+                <button id="melchizedekOpen">Learn More</button>
+                <dialog id="melchizedek">
+                    <button id="melchizedekClose">❌</button>
+                    <p>The high priests group leader and the elders quorum president are responsible for the spiritual and temporal welfare of the men over whom they preside. The bishop can 
+                        delegate to quorum and group leaders some of the work he does with families.</p>
+                    <p>Trujillo Ward's Melchizedek Priesthood Leaders:</p>
+                    <ul>
+                        <li><strong>President:</strong> Juan Arzú</li>
+                        <li><strong>First Counselor:</strong> Josué Gotay</li>
+                        <li><strong>Second Counselor:</strong> Ernesto Romero</li>
+                    </ul>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/femalePresident.webp" alt="Relief Society President Icon">
+                <h3>Relief Society President</h3>
+                <button id="reliefOpen">Learn More</button>
+                <dialog id="reliefSociety">
+                    <button id="reliefClose">❌</button>
+                    <p>The Relief Society president represents the women in the ward over the age of 18. She does all she can to help the women increase their faith and personal righteousness, 
+                        strengthen families and homes, and help those in need.</p>
+                    <p><strong>Trujillo Ward's Relief Society President:</strong> Ethel Benedith</p>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/malePresident.webp" alt="Young Men President Icon">
+                <h3>Young Men President</h3>
+                <button id="menOpen">Learn More</button>
+                <dialog id="youngMen">
+                    <button id="menClose">❌</button>
+                    <p>The Young Men president seeks to strengthen the ward’s young men ages 12 through 18. Assisted by his counselors, he helps the presidency of the Aaronic Priesthood 
+                        (bishopric) and oversees the Scouting program where it’s available.</p>
+                    <p><strong>Trujillo Ward's Young Men President:</strong> Andres Thomas (Bishop)</p>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/femalePresident.webp" alt="Young Women President Icon">
+                <h3>Young Women President</h3>
+                <button id="womenOpen">Learn More</button>
+                <dialog id="youngWomen">
+                    <button id="womenClose">❌</button>
+                    <p>The Young Women president seeks to strengthen the young women ages 12 through 18. She is responsible to “help each young woman be worthy to 
+                        make and keep sacred covenants and receive the ordinances of the temple.”</p>
+                    <p><strong>Trujillo Ward's Young Women President:</strong> Daniela Arzú</p>
+                </dialog>
+            </div>
+            <div>
+                <img src="images/femalePresident.webp" alt="Primary President Icon">
+                <h3>Primary President</h3>
+                <button id="primaryOpen">Learn More</button>
+                <dialog id="primary">
+                    <button id="primaryClose">❌</button>
+                    <p>The Primary president represents the children of the ward ages 18 months through 11 years. Her perspective will be beneficial when the 
+                        ward council is considering an issue that affects the children of the ward.</p>
+                    <p><strong>Trujillo Ward's Primary President:</strong> Flora Arana</p>
+                </dialog>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy <span id="year"></span> Trujillo Ward</p>
+        <div class="social">
+            <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.webp" alt="Facebook logo"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="images/instagram.webp" alt="Instagram logo"></a>
+        </div>
+    </footer>
+</body>
+</html>
