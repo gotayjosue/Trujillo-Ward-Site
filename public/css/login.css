@@ -100,6 +100,13 @@ main {
   animation: fadeInDown 0.4s ease, fadeOut 0.4s ease 4s forwards;
 }
 
+.alert ul{
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
 /* Colores */
 .alert.success {
   background: #d4edda;
