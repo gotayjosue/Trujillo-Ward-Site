@@ -1,0 +1,137 @@
+/* Asegura que body ocupe toda la pantalla */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* El contenedor principal llena el alto completo */
+.wrapper {
+  min-height: 100vh;          /* 100% de la altura de la ventana */
+  display: flex;
+  flex-direction: column;
+}
+
+/* El contenido crece y empuja el footer */
+main {
+  flex: 1; 
+  display: flex;
+  justify-content: center;    /* Centrado opcional */
+  align-items: center;        /* Centrado opcional */
+}
+
+/* Contenedor general */
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Encabezado */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Labels */
+.auth-container label {
+  display: block;
+  font-weight: 600;
+  margin: 0.75rem 0 0.25rem;
+  color: #34495e;
+}
+
+/* Inputs */
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.auth-container input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* Botón */
+.auth-container button {
+  width: 100%;
+  padding: 0.9rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #3498db;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-container button:hover {
+  background: #2980b9;
+}
+
+/* Mensaje de error o alerta */
+.auth-container .alert {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #fff;
+  background: #e74c3c;
+  text-align: center;
+}
+
+.alert {
+  position: fixed;        /* flotante, no relativo al flujo */
+  top: 20px;              /* separado del borde superior */
+  left: 50%;              /* posición centrada */
+  transform: translateX(-50%); /* lo centra en horizontal */
+  z-index: 9999;          /* siempre sobre todo */
+  
+  max-width: 90%;         /* no sobresale en móvil */
+  width: auto;            /* ajusta al contenido */
+  padding: 0.9rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  animation: fadeInDown 0.4s ease, fadeOut 0.4s ease 4s forwards;
+}
+
+/* Colores */
+.alert.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -30px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translate(-50%, -30px); }
+}

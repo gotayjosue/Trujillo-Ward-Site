@@ -39,6 +39,12 @@
                 <a  href="/activities">Activities</a>
                 <a href="/directory">Directory</a>
                 <a href="/contact">Contact Us</a>
+                <% if (user) { %>
+                    <a href="/profile">Profile</a>
+                    <a href="/logout">Logout</a>
+                <% } else { %>
+                    <a href="/login">👤 Login</a>
+                <% } %>
             </nav>
             <button id="menuButton"></button>
         </header>

@@ -1,0 +1,74 @@
+/* --- Perfil: estilos encapsulados --- */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: #f4f6f9; /* gris claro */
+  min-height: 100vh;
+}
+
+.profile-page h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Ícono de rol */
+.profile-card .role-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  border-radius: 50%;
+  border: 2px solid #ecf0f1;
+  background: #fafafa;
+}
+
+/* Datos */
+.profile-card p {
+  margin: 12px 0;
+  font-size: 1rem;
+  color: #34495e;
+}
+
+.profile-card p strong {
+  color: #2c3e50;
+}
+
+/* Badge de rol */
+.profile-card .badge {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.profile-card .badge.admin {
+  background: #e74c3c; /* rojo para admin */
+}
+
+.profile-card .badge.member {
+  background: #3498db; /* azul para miembro */
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,46 +1,40 @@
-const { getCollection } = require("../models/database");
-const { ObjectId } = require("mongodb");
+const Activity = require("../models/Activity");
 const cloudinary = require("../config/cloudinary");
 
 async function list(req, res) {
   try {
-    const activities = await getCollection("activities")
-      .find({}) 
-      .sort({ date: 1 }) // "YYYY-MM-DD" ordena bien como string
-      .toArray();
-
+    const activities = await Activity.find().sort({ date: 1 });
     res.json(activities);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error obteniendo actividades" });
   }
-};
+}
 
 function homePage(req, res) {
-    res.render('index', { weatherApiUrl: process.env.WEATHER_API_URL });
+  res.render('index', { weatherApiUrl: process.env.WEATHER_API_URL });
 }
 
 function activitiesPage(req, res) {
-    res.render('activities');
+  res.render('activities');
 }
 
 function detailsPage(req, res) {
-    res.render('details');
+  res.render('details');
 }
 
 function directoryPage(req, res) {
-    res.render('directory');
+  res.render('directory');
 }
 
 function contactPage(req, res) {
-    res.render('contactUs');
+  res.render('contactUs');
 }
 
 async function activityUpdatePage(req, res) {
   try {
-    const activityId = req.params.id; // mejor usar params, ej: /activities/:id/edit
-    const activities = getCollection('activities');
-    const activity = await activities.findOne({ _id: new ObjectId(activityId) });
+    const activityId = req.params.id;
+    const activity = await Activity.findById(activityId);
 
     if (!activity) {
       return res.status(404).send('Actividad no encontrada');
@@ -53,51 +47,32 @@ async function activityUpdatePage(req, res) {
   }
 }
 
-
 async function updateActivity(req, res) {
   try {
-    const {
-      activity,
-      date,
-      time,
-      location,
-      org,
-      responsible,
-      description
-    } = req.body;
-
-    // Convertir completed a boolean real
+    const { activity, date, time, location, org, responsible, description } = req.body;
     let completed = req.body.completed === 'true';
 
-    // -----------------------------
-    // 1. Fotos antiguas (JSON.parse de cada hidden input)
-    // -----------------------------
+    // Fotos antiguas
     let oldPhotos = req.body.oldPhotos || [];
     if (!Array.isArray(oldPhotos)) oldPhotos = [oldPhotos];
-
     oldPhotos = oldPhotos.map(p => {
       try {
-        return JSON.parse(p); // viene de JSON.stringify(photo) en EJS
+        return JSON.parse(p);
       } catch {
-        return { url: p, public_id: null }; // fallback si alguna viene como string
+        return { url: p, public_id: null };
       }
     });
 
-    // -----------------------------
-    // 2. Fotos nuevas subidas
-    // -----------------------------
+    // Fotos nuevas
     let newPhotos = (req.files || []).map(f => ({
-      url: f.path,         // link público de Cloudinary
-      public_id: f.filename // ID único en Cloudinary
+      url: f.path,
+      public_id: f.filename
     }));
 
-    // -----------------------------
-    // 3. Fotos a borrar
-    // -----------------------------
+    // Fotos a borrar
     let deletePhotos = req.body.deletePhotos || [];
     if (!Array.isArray(deletePhotos)) deletePhotos = [deletePhotos];
 
-    // Eliminar de Cloudinary las fotos seleccionadas
     for (const publicId of deletePhotos) {
       if (publicId && publicId !== 'null') {
         try {
@@ -109,34 +84,23 @@ async function updateActivity(req, res) {
       }
     }
 
-    // Mantener solo las fotos que no se marcaron para borrar
     let remainingPhotos = oldPhotos.filter(
       p => !deletePhotos.includes(p.public_id)
     );
 
-    // -----------------------------
-    // 4. Combinar y guardar
-    // -----------------------------
     const photos = [...remainingPhotos, ...newPhotos];
 
-    const activities = getCollection('activities');
-
-    await activities.updateOne(
-      { _id: new ObjectId(req.params.id) },
-      {
-        $set: {
-          activity,
-          date,
-          time,
-          location,
-          org,
-          responsible,
-          description,
-          completed,
-          photos
-        }
-      }
-    );
+    await Activity.findByIdAndUpdate(req.params.id, {
+      activity,
+      date,
+      time,
+      location,
+      org,
+      responsible,
+      description,
+      completed,
+      photos
+    });
 
     res.redirect('/activities');
   } catch (err) {
@@ -145,15 +109,14 @@ async function updateActivity(req, res) {
   }
 }
 
-activityFormPage = (req, res) => {
+function activityFormPage(req, res) {
   res.render('activity_form');
-};
+}
 
-createActivity = async (req, res) => {
+async function createActivity(req, res) {
   const { activity, date, time, location, org, responsible, description } = req.body;
   try {
-    const activities = getCollection('activities');
-    await activities.insertOne({
+    const newActivity = new Activity({
       activity,
       date,
       time,
@@ -164,24 +127,38 @@ createActivity = async (req, res) => {
       completed: false,
       photos: []
     });
+    await newActivity.save();
     res.redirect('/activities');
   } catch (err) {
+    console.error(err);
     res.status(500).send('Error saving activity');
   }
-};
+}
 
 async function deleteActivity(req, res) {
   try {
-    const activities = getCollection('activities');
-    const result = await activities.deleteOne({ _id: new ObjectId(req.params.id) });
-    if (result.deletedCount === 1) {
+    const result = await Activity.findByIdAndDelete(req.params.id);
+    if (result) {
       res.status(200).json({ message: 'Deleted' });
     } else {
       res.status(404).json({ error: 'Activity not found' });
     }
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Error deleting activity' });
   }
 }
 
-module.exports = { homePage, activitiesPage, detailsPage, directoryPage, contactPage, list, activityFormPage, createActivity, deleteActivity, activityUpdatePage, updateActivity };
+module.exports = {
+  homePage,
+  activitiesPage,
+  detailsPage,
+  directoryPage,
+  contactPage,
+  list,
+  activityFormPage,
+  createActivity,
+  deleteActivity,
+  activityUpdatePage,
+  updateActivity
+};

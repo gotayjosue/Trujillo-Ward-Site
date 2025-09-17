@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-    <% if (success_msg && success_msg.length > 0) { %>
-    <div class="alert success"><%= success_msg %></div>
-    <% } %>
-
-    <% if (error_msg && error_msg.length > 0) { %>
-    <div class="alert error"><%= error_msg %></div>
-    <% } %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,73 +17,44 @@
     <link rel="icon" href="images/favicon3.ico">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/home-large.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <script src="/js/home.js" type="module" defer></script>
-    <script>
-        window.WEATHER_API_URL = "<%= weatherApiUrl %>";
-    </script>
 </head>
 <body>
     <header>
         <img class="logo" src="images/trujillo_logo.png" alt="Trujillo Ward Logo">
 
         <nav id="navigation">
-            <a class="current-element" href="/">Home</a>
+            <a href="/">Home</a>
             <a href="/activities">Activities</a>
             <a href="/directory">Directory</a>
             <a href="/contact">Contact Us</a>
             <% if (user) { %>
-                <a href="/profile">Profile</a>
+                <a class="current-element" href="/profile">Profile</a>
                 <a href="/logout">Logout</a>
             <% } else { %>
                 <a href="/login">👤 Login</a>
             <% } %>
         </nav>
         <button id="menuButton"></button>
-
-        <h2 class="title">Trujillo Ward Website</h2>
-        <div class="desktop-only">
-            <h2>Welcome to the Trujillo Ward website!</h2>
-            <p>Here, you'll find information about our activities, leaders, and special events. 
-                We invite you to join us and experience the love of Christ in our community.</p>
-        </div>
-        <img class="hero" src="images/jesus_healing.webp" alt="Jesus healing people">
     </header>
 
     <main>
-        <div class="links">
-            <div class="directory">
-                <img src="images/location.webp" alt="Location icon">
-                <h3>Ward Directory</h3>
-                <p>Get to know the leaders of our church organizations and their roles. The Ward Directory provides information 
-                    about each organization’s purpose and how they serve our congregation</p>
-            </div>
-            <div class="calendar">
-                <img src="images/calendar.webp" alt="Calendar icon">
-                <h3>Activities Calendar</h3>
-                <p>Stay informed about upcoming church events, meetings, and activities. The Activities 
-                    Calendar helps you plan and participate in spiritual and community gatherings</p>
-            </div>
-            <div class="group">
-                <img src="images/group.webp" alt="Group icon">
-                <h3>Get to Know Us</h3>
-                <p>Learn more about our church, our mission, and our beliefs. Get to know the 
-                    people who serve and how you can become part of our faith community</p>
+        <div class="profile-page">
+            <h2><%= user %>'s Profile</h2>
+            <div class="profile-card">
+                <% if (user.role === 'admin') { %>
+                    <img src="/images/admin.png" alt="Admin Icon" class="role-icon">
+                <% } else { %>
+                    <img src="/images/member.png" alt="User Icon" class="role-icon">
+                <% } %>
+                <p><strong>Name:</strong> <%= user %></p>
+                <p><strong>Email:</strong> <%= email %></p>
+                <p><strong>Role:</strong> <%= role %></p>
             </div>
         </div>
 
-        <div class="data">
-            <div class="weather">
-                <h3>Current Weather</h3>
-            </div>
-
-            <div class="spotlight">
-                <h3>Activities spotlight</h3>
-
-            </div>
-        </div>
-    </main>
-
-    <footer>
+    <footer id="mainFooter">
         <p>&copy <span id="year"></span> Trujillo Ward</p>
         <div class="social">
             <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.webp" alt="Facebook logo"></a>

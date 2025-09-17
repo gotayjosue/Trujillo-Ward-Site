@@ -4,8 +4,14 @@ const routes = require('./routes/routes');
 const pool = require('./models/database');
 const { connectToDatabase } = require('./models/database');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
 
-
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'MySecretKey',
+  resave: false,
+  saveUninitialized: false
+}));
 
 // Set up view engine
 const path = require('path');
@@ -18,7 +24,15 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+app.use(flash());
 
+// Middleware to make flash messages available in all views
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
 
 // Connect to the database before starting the server
 
